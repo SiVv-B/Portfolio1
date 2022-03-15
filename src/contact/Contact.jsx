@@ -1,25 +1,23 @@
-import React, {useContext, useRef, useState} from "react"
-import "./Contact.css"
-import Phone from "../img/phone.png"
-import Email from "../img/email.png"
-import Address from "../img/address.png"
+import React, { useRef, useState } from 'react'
+import './Contact.css'
+import Phone from '../img/phone.png'
+import Email from '../img/email.png'
+import Address from '../img/address.png'
 import emailjs from '@emailjs/browser'
-import { ThemeContext } from "../context"
 
 const Contact = () => {
   const formRef = useRef()
   const [done, setDone] = useState(false)
- // const theme = useContext(ThemeContext)
-  //const darkMode = theme.state.darkMode
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
     emailjs
       .sendForm(
-        "service_kfty6cq",
-        "template_rarhjxf",
+        'service_kfty6cq',
+        'template_rarhjxf',
         formRef.current,
-        "H4yR-KtTlIhNNud_R"
+        'H4yR-KtTlIhNNud_R',
       )
       .then(
         (result) => {
@@ -28,7 +26,7 @@ const Contact = () => {
         },
         (error) => {
           console.log(error.text)
-        }
+        },
       )
   }
 
@@ -41,15 +39,15 @@ const Contact = () => {
           <div className="c-info">
             <div className="c-info-item">
               <img src={Phone} alt="" className="c-icon" />
-              +1 1234 556 75
+              +33 06 12 34 56
             </div>
             <div className="c-info-item">
               <img className="c-icon" src={Email} alt="" />
-              contact@lama.dev
+              contact@siwar.com
             </div>
             <div className="c-info-item">
               <img className="c-icon" src={Address} alt="" />
-              245 King Street, Touterie Victoria 8520 Australia
+              12 rue lamda, 8520 France
             </div>
           </div>
         </div>
@@ -59,12 +57,12 @@ const Contact = () => {
             freelancing if the right project comes along. me.
           </p>
           <form ref={formRef} onSubmit={handleSubmit}>
-            <input  type="text" placeholder="Name" name="user_name" />
-            <input  type="text" placeholder="Subject" name="user_subject" />
-            <input  type="text" placeholder="Email" name="user_email" />
+            <input type="text" placeholder="Name" name="user_name" />
+            <input type="text" placeholder="Subject" name="user_subject" />
+            <input type="text" placeholder="Email" name="user_email" />
             <textarea  rows="5" placeholder="Message" name="message" />
             <button>Submit</button>
-            {done && "Thank you..."}
+            {done && 'Email is sent with success...'}
           </form>
         </div>
       </div>
